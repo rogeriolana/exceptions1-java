@@ -16,19 +16,19 @@ public class Program {
 
 		System.out.print("Room number: ");
 		int number = sc.nextInt();
-		System.out.print("Data de check-in(dd/MM/yyy) : ");
+		System.out.print("Check-in date(dd/MM/yyy) : ");
 		Date checkIn = sdf.parse(sc.next());
-		System.out.print("Data de check-out(dd/MM/yyy) : ");
+		System.out.print("Check-out date(dd/MM/yyy) : ");
 		Date checkOut = sdf.parse(sc.next());
 
 		if (!checkOut.after(checkIn)) {
-			System.out.println("Reservation error: check-out details must be later than check-in details");
+			System.out.println("Booking error: Check-out details must be later than check-in details");
 		} else {
 			Reservation reservation = new Reservation(number, checkIn, checkOut);
 			System.out.println("Reservation: " + reservation);
 
 			System.out.println();
-			System.out.println("Enter the data to update the reservation:");
+			System.out.println("Enter data to update the reservation");
 			System.out.print("Check-in date(dd/MM/yyy) : ");
 			checkIn = sdf.parse(sc.next());
 			System.out.print("Check-out date(dd/MM/yyy) : ");
