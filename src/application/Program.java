@@ -14,35 +14,35 @@ public class Program {
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
 
-		System.out.print("Room number: ");
+		System.out.print("Numero do quarto: ");
 		int number = sc.nextInt();
-		System.out.print("Check-in date(dd/MM/yyy) : ");
+		System.out.print("Data de check-in(dd/MM/yyy) : ");
 		Date checkIn = sdf.parse(sc.next());
-		System.out.print("Check-out date(dd/MM/yyy) : ");
+		System.out.print("Data de check-out(dd/MM/yyy) : ");
 		Date checkOut = sdf.parse(sc.next());
 
 		if (!checkOut.after(checkIn)) {
-			System.out.println("Booking error: Check-out details must be later than check-in details");
+			System.out.println("Erro de reserva: os detalhes do check-out devem ser posteriores aos detalhes do check-in");
 		} else {
 			Reservation reservation = new Reservation(number, checkIn, checkOut);
-			System.out.println("Reservation: " + reservation);
+			System.out.println("Reserva: " + reservation);
 
 			System.out.println();
-			System.out.println("Enter data to update the reservation");
-			System.out.print("Check-in date(dd/MM/yyy) : ");
+			System.out.println("Insira os dados para atualizar a reserva");
+			System.out.print("Data de check-in(dd/MM/yyy) : ");
 			checkIn = sdf.parse(sc.next());
-			System.out.print("Check-out date(dd/MM/yyy) : ");
+			System.out.print("Data de chec-out(dd/MM/yyy) : ");
 			checkOut = sdf.parse(sc.next());
 
-			Date now = new Date();
-			if (checkIn.before(now) || checkIn.before(now)) {
-				System.out.println("Error in reservation dates for update must be future!");
-			} else if (!checkOut.after(checkIn)) {
-				System.out.println("Reservation error: Check-out date must be later than check-in date!");
-			} else {
-				reservation.updateDates(checkIn, checkOut);
-				System.out.println("Reservation: " + reservation);
-			}
+	
+			
+				String error = reservation.updateDates(checkIn, checkOut);
+				if (error != null) {
+					System.out.println("Erro na reserva" + ":" + error);
+				}
+				else {
+				System.out.println("Reserva: " + reservation);
+				}
 		}
 		sc.close();
 

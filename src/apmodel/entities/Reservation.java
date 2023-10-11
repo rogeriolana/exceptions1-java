@@ -40,14 +40,22 @@ public class Reservation {
 		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 	}
 
-	public void updateDates(Date checkIn, Date checkOut) {
+	public String updateDates(Date checkIn, Date checkOut) {
+		
+		Date now = new Date();
+		if (checkIn.before(now) || checkIn.before(now)) {
+			return"Erro nas datas de reserva para atualização deve ser futuro!";
+		}  if (!checkOut.after(checkIn)) {
+			return "A data de check-out deve ser posterior à data de check-in!";
+		} 
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
+		return null;
 	}
 
 	@Override
 	public String toString() {
 		return "Room" + roomNumber + " , check-in: " + sdf.format(checkIn) + " , check-out: " + " , " + duration()
-				+ " nights ";
+				+ " noites ";
 	}
 }
